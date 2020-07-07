@@ -1,0 +1,28 @@
+object CocoBellaProdImportSchema extends Entity with SheetImportSchema {
+  singular = "CocoBella Product Import"
+  
+  impl func title = "CocoBella Product Import"  
+  impl back func process(file: File, data: [String?]?) = {
+    data.map{row =>
+      ProdImportJob(data = row!).enqueue
+    }
+  }
+}
+
+object ProdImportService extends SystemService {
+  impl func title = "Prod Import Service"
+  func serviceAccess: [Role]? = [Admin]
+  impl view form = nav{grid(labels = Top){
+     issuesView
+     serviceState
+     errorsCount >> field(editMode = AlwaysRead)
+  }}
+}
+
+class ProdImportJob extends SystemJob {
+  impl func service = ProdImportService
+  field data: String
+  impl func do = {
+    data.splitTo[ProdData](",", CSV).make
+  }
+}

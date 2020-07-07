@@ -1,0 +1,4 @@
+entity Asset extends Account with ICategory {
+  func stdCorrectionCategory: StdCategory = CapitalGain
+  func exceptional = false
+}

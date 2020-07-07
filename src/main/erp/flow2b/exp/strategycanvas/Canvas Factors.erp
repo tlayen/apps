@@ -1,0 +1,5 @@
+inline entity CanvasFactor{
+  field competingFactor : [SummaryFactor] 
+  field subFactors : [SubFactor] //from competingFactor.subFactor
+  field canvas : Canvas
+}

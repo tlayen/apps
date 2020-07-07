@@ -1,0 +1,4 @@
+extend role Admin {
+  extend view menu = ISuperProduct
+  extend view menu = Vendor
+}

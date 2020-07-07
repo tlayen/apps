@@ -1,0 +1,16 @@
+/*entity Product {
+  field title: String
+  field unit: Unit
+    
+  field ingredient: Ingredient? inline by ingredient
+  field equipment: Equipment? inline by product
+  field recipes: [Recipe] by outputProduct //inline by outputProduct
+}
+
+entity Unit {
+  field shortName: String 
+  field longName: String 
+  
+  func title = shortName
+}
+*/

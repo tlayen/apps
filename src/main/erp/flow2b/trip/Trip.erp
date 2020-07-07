@@ -1,0 +1,15 @@
+entity Trip {
+  background = "#498898"
+  impl field title: String 
+  field events: [Event]? read by trip
+  impl view form = nav{grid{
+    title
+    events
+    tickets
+  }}
+  report Report {
+    impl view list = Trip.all >> nav {list{grid(labels = None){
+      title
+    }}}
+  }
+}

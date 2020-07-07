@@ -1,0 +1,3 @@
+entity Product {
+  field title: String
+}

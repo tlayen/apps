@@ -1,0 +1,10 @@
+access custom{
+  menu extras{
+    entity Event
+    entity Goal
+    entity Resources
+    entity Discussion
+    entity BucketList
+    entity Learning
+  }
+} 

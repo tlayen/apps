@@ -1,0 +1,41 @@
+entity FacebookShopIntegration extends ICatalogIntegration[String] with OAuth2 {
+  impl func title = "Facebook Shop Integration $label"
+  ref field label: String?
+  field catalogId: Int
+  impl func roles: [Role]? = [Admin]
+  impl func authAuthorizeUrl: Url = "https://www.facebook.com/v2.12/dialog/oauth"
+  impl func authTokenExchangeUrl: Url = "https://graph.facebook.com/v2.12/oauth/access_token"
+  impl func authClientId = "179463969526410"
+  impl func authClientSecret = "6547c16a4e69b66d0deb34c1dccb7628"
+  impl func authScope = "ads_management"
+  func endpoint = "graph.facebook.com/v2.12/"
+  
+  func https(path: Url?): HttpRequest = {
+    HttpRequest(url = "$endpoint$path", ssl = true)
+      .auth(this)
+      .param("access_token", accessToken)
+  } 
+     
+  impl view form = nav{
+    grid(labels = Top){
+      issuesView
+      serviceState
+      errorsCount >> field(editMode = AlwaysRead)
+      label
+      catalogId
+      integs
+    }
+    authorizeView
+  }
+  impl event onSave = {
+    if (created || updated(integs) || updated(serviceState) || updated(catalogId)) {
+      if (serviceState == Active && !deleted) {
+        updateAllProducts()
+      }
+    }
+  }
+  
+  impl back func updateProductJobs(integ: ECommerceIntegration, change: BatchChange[ProductUpdate[ISubProduct]]): [SystemJob]? = {
+    [UpdateProducts(service = this, integ = integ, change = change)]
+  }
+}

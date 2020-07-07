@@ -1,0 +1,9 @@
+entity Job{
+  field title : String
+  field content : Content? //inline by job
+}
+
+
+extend entity Body{
+  field job : Job 
+}

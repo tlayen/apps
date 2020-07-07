@@ -1,0 +1,10 @@
+extend trait Actor {
+  field xeroId: String?
+}
+
+extend entity Company {
+  extend view form = xeroId
+}
+extend entity Person {
+  extend view form = xeroId
+} 

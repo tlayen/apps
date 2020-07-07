@@ -1,0 +1,11 @@
+role JobManager{
+  entity JobCard
+  menu Jobs{
+  entity JobCard
+  }}
+
+role SalesPerson{
+  menu Sales{
+    trait Opportunity
+    entity BulkOpportunity
+  }}

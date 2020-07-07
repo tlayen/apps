@@ -1,0 +1,42 @@
+entity JpImport extends SystemService {
+  func title = "Import $legalEntity"
+  ref field legalEntity: OurLegalEntity 
+  field store: IStore 
+  field cashAccount: CashAccount 
+  field eftposAccount: BankAccount 
+  field creditCardAccount: BankAccount
+  field customers: [File]?
+  field buyingItems: [File]?
+  field buyings: [File]?
+  
+  field salesItems: [File]?
+  field sales: [File]?
+  func roles: Set[Role]? = [Admin]
+  view form = nav{grid {
+    legalEntity
+    store
+    cashAccount
+    eftposAccount
+    creditCardAccount
+    serviceState
+    customers
+    //button("Import Customers", visible = customers) {
+    //  CustomersImportJob(service = this).run()
+    //}
+    buyings
+    buyingItems
+    //button("Import Buyings", visible = buyings && buyingItems) {
+    //  PurchaseImport(service = this).run()
+    //}
+    sales
+    salesItems
+    //button("Import Sales", visible = sales && salesItems) {
+    //  SalesImport(service = this).run()
+    //}
+  }}
+  object view list = JpImport.all >> list{grid(labels = None){
+    x {title serviceState}
+  }}
+} 
+   
+  

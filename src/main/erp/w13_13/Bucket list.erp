@@ -1,0 +1,14 @@
+entity BucketList{
+  field title : String
+  field description : Text? 
+  field status : BLStatus
+  field who : [Person]
+  field goal : Goal?
+  
+}
+
+enum BLStatus{
+  case Active
+  case Later
+  case Done
+}

@@ -1,0 +1,4 @@
+entity Question{
+  field title : String
+  field person : Person
+}

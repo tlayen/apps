@@ -1,0 +1,7 @@
+entity BaseProject {
+  ref field location: Location
+  func title = location.title
+  field price: Dec[2]
+}
+
+

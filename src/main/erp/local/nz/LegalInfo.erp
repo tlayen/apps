@@ -1,0 +1,16 @@
+class LegalInfoNZ extends LegalInfo {
+  background = "#012389"
+  color = "#d4092c"
+  singular = "NZ"
+  field nzbn: String? {label = "NZBN"}
+  field irdNumber: String? 
+  impl field gstNumber: String? 
+  impl compute taxNumber = irdNumber
+  impl view form = grid(labels = Top){
+    name
+    nzbn
+    irdNumber
+    gstNumber
+  }
+  
+}

@@ -1,0 +1,16 @@
+access myaccess{
+ entity SampleEntity = readWrite
+   menu SampleApp{
+   entity SampleEntity
+   entity Company1
+   entity Invoice1
+   entity Person1
+   entity Organisation1
+   entity OrganisationPersonRole1
+   entity Role1
+   entity Transaction
+   entity Task
+   entity Company2
+
+ }
+}

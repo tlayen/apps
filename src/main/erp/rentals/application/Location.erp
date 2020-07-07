@@ -1,0 +1,4 @@
+inline entity Location{
+  field address : String
+  field application : Application
+}

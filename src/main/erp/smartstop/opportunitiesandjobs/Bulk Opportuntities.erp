@@ -1,0 +1,13 @@
+  
+entity BulkOpportunity{
+  
+    field company : Company
+    field location : String
+    field startDate : Date
+    field assigned : Person
+    field status : JobOpportunityStatus
+    field source : MarketingSource
+    field jobOpportunity : [Opportunity] read by bulkOpportunity
+    func enteredby = Person.current
+        func title = company +  location
+}

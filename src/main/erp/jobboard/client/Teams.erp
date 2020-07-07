@@ -1,0 +1,6 @@
+entity Team{
+  //field workgroup : Workgroup
+  field person : Person
+    
+    func title = person
+}

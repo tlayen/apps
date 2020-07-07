@@ -1,0 +1,5 @@
+access ProjectManager{
+  entity Project
+    menu Projects{
+      entity Project
+    }}

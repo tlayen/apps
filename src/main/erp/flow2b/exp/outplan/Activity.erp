@@ -1,0 +1,3 @@
+trait OutboundActivity{
+  field outboundPlan : OutboundPlan read by outboundActivity
+}

@@ -1,0 +1,20 @@
+role Support {
+  entity Incident = readWrite
+  entity UniversalApp = readOnly
+  entity PersonalProject = readOnly
+  menu Support {
+    report ActiveIncident
+    entity Incident
+  }
+}
+
+extend role Customer {
+  entity Incident {
+    read = isTheir
+    write = isTheir
+  }
+  menu Support {
+    entity Incident
+  }
+}
+

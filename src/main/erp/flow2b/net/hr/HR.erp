@@ -1,0 +1,11 @@
+role HR {
+  entity Timetable = readWrite
+  entity Payroll = readWrite
+  
+  impl view menu = y {
+    menu("HR") {
+      Timetable >> item(fastAdd)
+      Payroll
+    }
+  }
+}

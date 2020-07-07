@@ -1,0 +1,9 @@
+extend role UserRole {
+  entity Trip {
+    read = hasObserver(User.current)
+    write = hasObserver(User.current)
+  }
+  extend view menu = extend("Empty") {
+    Trip >> item(fastAdd)
+  }
+}

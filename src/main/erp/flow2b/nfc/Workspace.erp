@@ -1,0 +1,3 @@
+extend entity Workspace {
+  extend override func hasNfc: Bool = true
+}

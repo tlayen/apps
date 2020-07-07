@@ -1,0 +1,5 @@
+entity Proposal{
+  field title : String
+  field details : Text
+  field person : Person
+}

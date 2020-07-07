@@ -1,0 +1,9 @@
+entity Subject {
+  impl field title: String {label = "Subject"}
+  field description: Text?
+  field gradeLevel: String
+  field subjectCode: String
+  field teacher: Teacher
+  
+  impl view form = nav { grid {title, teacher, description, gradeLevel, subjectCode}}
+}

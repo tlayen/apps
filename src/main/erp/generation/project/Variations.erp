@@ -1,0 +1,5 @@
+entity Variation {
+  field title: String {width = 0.7}
+  field price: Dec[2]
+}
+ 

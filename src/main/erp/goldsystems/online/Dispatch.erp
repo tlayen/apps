@@ -1,0 +1,4 @@
+entity Dispatch {
+  field title : String
+}
+  

@@ -1,0 +1,36 @@
+back class CatData {
+  field id: Int
+  field parentId: Int
+  field title: String
+  field desc: Text?
+  field urlSuffix: String
+  field seoTitle: String?
+  field seoDesc: String?
+   
+  func slug = "$id-$urlSuffix"
+ 
+                                                                                                  
+  func make(datas: [Int : CatData]): ProductCategory = {
+    let c = ProductCategory.all.find(_.name == this.title).result.get.alt(ProductCategory(name = title))
+    if (parentId != 1) {
+      c.superCategory = datas(parentId)!.make(datas)
+    }
+    c.description = desc
+    c.slug = slug
+    c.seoName =? if (seoTitle != "NULL") seoTitle
+    c.seoDesc = if (seoDesc != "NULL") seoDesc
+    c.save
+  }
+}
+
+object CocoBellaCatImportSchema extends Entity with SheetImportSchema {
+  singular = "CocoBella Category Import"
+  
+  impl func title = "CocoBella Category Import"  
+  impl back func process(file: File, data: [String?]?) = {
+    let datas: [Int : CatData] = data.drop(1).map{row =>
+      row.splitTo[CatData](",", CSV)
+    }.toMap(id)!
+    datas.values.foreach(_.make(datas))
+  }
+}

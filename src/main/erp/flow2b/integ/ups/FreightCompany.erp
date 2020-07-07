@@ -1,0 +1,5 @@
+extend enum FreightCompany {
+  case Ups(trackingUrl = "https://wwwapps.ups.com/tracking/tracking.cgi?tracknum=$number") {
+    background = "#351c15" color = "#ffb500"
+  }
+}

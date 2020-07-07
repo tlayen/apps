@@ -1,0 +1,4 @@
+entity Procedure{
+  field title : String
+  field details : Text
+}

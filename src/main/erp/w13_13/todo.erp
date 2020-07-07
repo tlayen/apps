@@ -1,0 +1,4 @@
+entity ToDo{
+  field title : String
+  field details : Text
+}

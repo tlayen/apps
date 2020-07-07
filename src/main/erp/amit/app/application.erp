@@ -1,0 +1,5 @@
+entity application{
+  field person : Person
+  field title : String
+}
+  

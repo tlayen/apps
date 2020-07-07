@@ -1,0 +1,10 @@
+role CafeOwner {
+  menu Planning {
+    entity Project
+  }
+  menu Menu {
+    entity Recipe
+    entity Ingredient
+    entity Equipment  
+  }
+}

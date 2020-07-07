@@ -1,0 +1,3 @@
+extend entity MarketingSource{
+  field opportunity : Opportunity
+}

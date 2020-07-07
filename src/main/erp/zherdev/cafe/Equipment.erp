@@ -1,0 +1,5 @@
+entity Equipment {
+  field title: String
+  
+  field usageCostPerHour: Dec[2]?
+}

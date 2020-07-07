@@ -1,0 +1,5 @@
+inline entity ExistingTools{
+  field tool : Tool
+  field rating : String
+  field opportunity : Opportunity
+}

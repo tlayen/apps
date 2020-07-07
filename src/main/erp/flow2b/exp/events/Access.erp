@@ -1,0 +1,7 @@
+access Events{
+  trait Event
+  entity Venue
+    menu Events{
+      trait Event
+  }
+}

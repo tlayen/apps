@@ -1,0 +1,6 @@
+entity Company {
+  field code: Int
+  field name: String
+  
+  view list = table{code, name}
+}

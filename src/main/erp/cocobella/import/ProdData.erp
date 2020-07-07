@@ -1,0 +1,68 @@
+back class ProdData {
+  field id: Int
+  field active: Int?
+  field title: String
+  field sCategories: String?
+  field price: UMoney?
+  field shortDesc: Text?
+  field desc: Text?
+  field seoTitle: String?
+  field seoKeywords: String?
+  field seoDesc: String?
+  field urlSuffix: String
+  field imageIds: String?
+  field sAttrs: String?
+   
+  func slug = "$id-$urlSuffix"
+  func photos: [Image]? = if (imageIds != "NULL") imageIds.split(", ").map(imgId => Image(url = "http://www.cocobella.co.nz/$id-$imgId/$urlSuffix.jpg").save)
+  func attrsMap: [String : [String]]? = if (sAttrs != "NULL") sAttrs.split("@@").groupBy(s => (s[ .. "^^"))!).mapValues(_.map(s => (s("^^" .. ])!))
+  func sizes: [Size]? = attrsMap("Size").map(s => Size.all.find(title == s).result.get.alt(Size(title = s).save))
+  func colors: [ColorItem]? = attrsMap("colour").map(s => ColorItem.all.find(title == s).result.get.alt(ColorItem(title = s).save))
+  func categories: [ProductCategory]? = sCategories.split("@@").map(s => ProductCategory.all.find(name == s).result.get.alt(ProductCategory(name = s!).save))
+                                                                                                  
+  func make: ISuperProduct = {
+    if (let p = ISuperProduct.all.find(_.title == this.title).result.get) {
+      if (let c = p.as[Clothing]) {
+        c.description = desc
+      } else if (let c = p.as[VariableGood]) {
+        c.description = desc
+      } else if (let c = p.as[Good]) {
+        c.description = desc
+      }
+      p.save
+    } else {
+      let sizes = this.sizes
+      let colors = this.colors
+      let st: ProductStatus = if (active) ForSale else NotForSale
+      let sp = SalesPrice(regular = price, current = price)
+      if (let sizes, let colors) {
+        Clothing(
+          title = title, refNum = id, status = st
+          salesPrice = sp, description = desc,
+          categories = categories, photos = photos
+          slug = slug, seoTitle = seoTitle.alt(title), seoDescription = seoDesc,
+          colors = colors.map{color =>
+            ClothingColor(color = color, sizes = sizes.map(size => ClothingSize(size = size)))
+          }
+        ).save.as[ISuperProduct]!
+      } else if (sizes || colors) {
+        VariableGood(
+          title = title, refNum = id, status = st
+          salesPrice = sp, description = desc,
+          categories = categories, photos = photos
+          slug = slug, seoTitle = seoTitle.alt(title), seoDescription = seoDesc,
+          variations = (sizes + colors).map{a =>
+            GoodVariation(color = a.as[ColorItem], size = a.as[Size])
+          }
+        ).save.as[ISuperProduct]!
+      } else {
+        Good(
+          title = title, refNum = id, status = st
+          salesPrice = sp, description = desc,
+          categories = categories, photos = photos
+          slug = slug, seoTitle = seoTitle.alt(title), seoDescription = seoDesc
+        ).save
+      }
+    }
+  }
+}

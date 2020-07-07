@@ -1,0 +1,3 @@
+extend entity Company{
+  field tool : [Tool]? read by company
+}

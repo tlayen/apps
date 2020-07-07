@@ -1,0 +1,8 @@
+
+  extend entity Person{
+    field  contractorProposal : Proposal? by person
+  }
+
+/*extend enum PersonType{
+  case Applicant
+}*/

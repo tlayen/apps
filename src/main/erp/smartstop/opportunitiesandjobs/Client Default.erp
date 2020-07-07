@@ -1,0 +1,7 @@
+/*entity ClientDefault{
+  field 
+    
+    field costType : CostType
+  field jobPeople : JobPeople
+    
+    field sssp required*/

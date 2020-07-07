@@ -1,0 +1,10 @@
+access ActionHub{
+  entity Task = readWrite
+  trait Todo = readWrite
+  entity Activity
+  menu ActionHub{
+  report MyActionItems
+  report OthersActionItems
+
+
+  }}

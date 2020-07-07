@@ -1,0 +1,4 @@
+extend enum Currency {
+  extend object func default: Currency = RUB
+
+}

@@ -1,0 +1,6 @@
+role Logger {
+  entity Log
+  entity Mineralisation
+  menu Logging {
+  entity Log}
+  }

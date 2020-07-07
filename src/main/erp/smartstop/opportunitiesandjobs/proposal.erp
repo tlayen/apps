@@ -1,0 +1,7 @@
+
+inline entity Proposal{
+ 
+ 
+  field quote : Quote
+  field jobOpportunity : Opportunity
+}

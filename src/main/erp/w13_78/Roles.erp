@@ -1,0 +1,18 @@
+/*role Owner {
+  entity Product = readWrite
+  entity Company = readWrite
+  entity Recipe = readWrite
+  entity Equipment = readWrite
+  menu Tasks {
+    entity MyToDo = "My To Do"
+    entity ToDo = "To Do"
+  }
+    
+  menu Main {
+    entity Product
+    entity Company
+    entity Recipe
+    entity Equipment
+  }
+  
+}*/

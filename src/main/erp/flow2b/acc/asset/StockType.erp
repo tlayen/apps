@@ -1,0 +1,8 @@
+extend enum StockInvType {
+  case Asset(obj = LFixedAssets, acc = LedgerAccount.FixedAssets, stock = Asset,
+             stockDesc = "<p>Include Assets – products in use or for rent.</p><p></p><p>Do <b>not</b> include Inventory only – usually products for sale.</p>"
+            ) 
+  {
+    background = "#c4daa3"
+  }
+}

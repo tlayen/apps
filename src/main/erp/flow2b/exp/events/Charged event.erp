@@ -1,0 +1,14 @@
+   /*entity EventPricing{
+    field type : PriceType
+    field price : Int
+      func title: String = price
+  }
+
+
+  entity Speaker{
+ field person : Person
+ field orgnisation : Company
+      field information : String
+        field event : [Event] 
+    func title = person
+  }*/

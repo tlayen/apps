@@ -1,0 +1,7 @@
+role Operations{
+  trait MetalAccount
+ // entity Liquidation
+    menu Operation{
+ //   entity Liquidation
+    trait MetalAccount
+}}

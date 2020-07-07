@@ -1,0 +1,9 @@
+extend role Marketer {
+  entity CustomerStory = readWrite
+  entity MarketingBacklog = readWrite
+  extend view menu = extend("Marketing") {
+    MarketingBacklog >> item(label = "Backlogs")
+    MarketingIssue >> item(label = "Issues")
+  }
+  
+}

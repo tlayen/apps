@@ -1,0 +1,8 @@
+access RentalManager{
+  entity Application
+  entity Property
+    menu Rentals{
+    entity Application
+    entity Property
+}
+}

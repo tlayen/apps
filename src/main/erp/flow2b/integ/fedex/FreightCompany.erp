@@ -1,0 +1,5 @@
+extend enum FreightCompany {
+  case Fedex(trackingUrl = "https://www.fedex.com/apps/fedextrack/?action=track&trackingnumber=$number") {
+    background = "#4d148c" color = "#ff6200"
+  }
+}
