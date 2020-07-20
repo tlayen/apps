@@ -1,0 +1,15 @@
+enum EftposStatus {
+  case Paired { 
+    icon = "check"
+    background = "#dea"
+  }
+  
+  case NotPaired {
+    background = "#999"
+  }
+  
+  case Pairing {
+    background = "#8bf"
+    icon = "spinner"
+  }
+}

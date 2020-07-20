@@ -1,0 +1,3 @@
+entity JobTitle {
+  field title: String
+}

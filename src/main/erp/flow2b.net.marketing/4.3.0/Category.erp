@@ -1,0 +1,16 @@
+entity Category{
+  background = "#a73e6c"
+  field title : String
+}
+
+enum ContentCategory{
+  case Testimonial
+  case Branding
+  case Advertisement
+  case Offer
+  case Blog
+  case Message
+  case Notification
+  case Information
+  case Speech
+}

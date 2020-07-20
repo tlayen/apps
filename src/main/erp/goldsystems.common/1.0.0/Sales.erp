@@ -1,0 +1,5 @@
+trait Sales {
+  func billing : Actor  //AZ: What is that? The name is hard to understand
+  func shippingPerson : Person?
+}
+

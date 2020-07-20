@@ -1,0 +1,5 @@
+extend entity CompanyPerson {
+  field jobTitle: JobTitle? {views = []}
+  field department: Department? by people {views = []}
+  extend view form = row {jobTitle department}
+}

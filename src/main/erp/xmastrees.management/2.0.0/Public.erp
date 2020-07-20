@@ -1,0 +1,17 @@
+extend role Public {
+  entity RetailStore = readOnly
+  entity SalesContractorApplication {
+    read = false
+    write = old.isEmpty
+  }
+  entity DriverApplication {
+    read = false
+    write = old.isEmpty
+  }
+  entity Person {
+    read = false
+    write = old.isEmpty
+  }
+  menu {
+  }
+}

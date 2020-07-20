@@ -1,0 +1,4 @@
+entity Website {
+  field title: String
+  field products: [MarketingProduct]? read by website
+}

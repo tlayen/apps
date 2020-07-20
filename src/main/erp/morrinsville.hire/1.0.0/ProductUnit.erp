@@ -1,0 +1,3 @@
+extend enum ProductUnit {
+  case Hour(symbol = "hour", scale = 2, base = null, k = 1)
+}

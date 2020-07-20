@@ -1,0 +1,12 @@
+extend access Salesperson {
+  entity SalesOpportunity = readWrite
+  entity OpportunityProduct = readWrite
+  entity OpportunityUserStory = readWrite
+    
+}
+
+extend access SalesManager {
+  menu Sales {
+    report SOFunnel
+  } 
+}

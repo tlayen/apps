@@ -1,0 +1,10 @@
+inline entity OpportunityProduct {
+  field opportunity: SalesOpportunity
+  field product: DevProduct
+  field description: Text?
+  view form = grid (labels = None) {
+    opportunity
+    product
+    description
+  }
+}

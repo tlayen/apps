@@ -25,25 +25,39 @@ var Paths = Java.type('java.nio.file.Paths');
 var Files = Java.type('java.nio.file.Files');
 var Opt = Java.type('java.nio.file.StandardOpenOption');
 var dslDir = Paths.get('src/main/erp');
-var apps = db.query('select from (select dslPackage, last(versions) as version from App) where version is not null');
-for (var i = 0; i < apps.length; i++) {
-  var app = apps[i];
-  var dslPackage = app.field('dslPackage');
-  var version = app.field('version');
-  print(dslPackage);
-  print(version);
-  var dirs = dslPackage.split('.');
-  var dir = dslDir;
-  for (var j = 0; j < dirs.length; j++) {
-    var child = dirs[j];
-    dir = dir.resolve(child);
-  }
+var sources = db.query('select from AppSource');
+
+// If this fails then delete the directory manually.
+Files.deleteIfExists(dslDir);
+
+for (var i = 0; i < sources.length; i++) {
+  var source = sources[i];
+  var id = source.field('@rid');
+  var dslPackage = source.field('dslPackage');
+  var version = source.field('version');
+  var status = source.field('status');
+  print('AppSource: id = ' + id + ', dslPackage = ' + dslPackage + ', version = ' + version + ', status = ' + status);
+
+  var dir = dslDir.resolve(dslPackage).resolve(version);
   Files.createDirectories(dir);
-  var files = version.field('files');
+
+  var manifest = dir.resolve('AppSource.properties')
+  var fields = source.toMap();
+  for each (var field in fields.keySet()) {
+    if (!field.equals('files') && !field.equals('@class')) {
+      var prop = field + ' = ' + fields.get(field) + '\n';
+      Files.write(manifest, prop.getBytes(), Opt.APPEND, Opt.CREATE);
+    }
+  }
+
+  var files = source.field('files');
   for (var j = 0; j < files.length; j++) {
     var file = files[j];
-    var f = dir.resolve(file.field('name') + '.erp');
-    Files.write(f, file.field('content').getBytes());
+    var name = file.field('name');
+    var content = file.field('content');
+    // print('File: name = ' + name);
+    var f = dir.resolve(name + '.erp');
+    Files.write(f, content.getBytes());
   }
 }
 end

@@ -1,0 +1,15 @@
+entity Category{
+  field title : String
+}
+
+enum ContentCategory{
+  case Testimonial
+  case Branding
+  case Advertisement
+  case Offer
+  case Blog
+  case Message
+  case Notification
+  case Information
+  case Speech
+}

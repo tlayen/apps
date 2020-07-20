@@ -1,0 +1,3 @@
+extend entity Entity {
+  field demo: Bool
+}

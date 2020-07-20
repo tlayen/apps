@@ -1,0 +1,21 @@
+variableProduct Clothing (skuPrefix = "CLT") {
+  field color: ColorItem?
+  impl view customView = grid{row{
+    color space space
+  }}
+  
+  variation ClothingVariation {
+    ref key field color: ColorItem
+    ref key field size: Size
+    
+    impl view customView = grid{row{
+      color size space
+    }}
+  }
+  
+  photo ClothingPhoto {
+    field color: ColorItem?
+  }
+}
+ 
+ 

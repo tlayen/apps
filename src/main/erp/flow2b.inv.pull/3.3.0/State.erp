@@ -1,0 +1,11 @@
+enum DropShipState {
+  case NotDropShip {
+    background = "#ddd"
+  }
+  case DropShip {
+    background = "#d6bbff"
+  }
+  case PartialDropShip {
+    background = "#d6bbff"
+  }
+}

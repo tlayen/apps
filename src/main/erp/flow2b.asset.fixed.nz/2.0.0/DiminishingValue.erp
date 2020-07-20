@@ -1,0 +1,4 @@
+class DiminishingValueDepreciation extends DepreciationMethod {
+  singular = "Diminishing Value"
+  field rate: Percent
+}

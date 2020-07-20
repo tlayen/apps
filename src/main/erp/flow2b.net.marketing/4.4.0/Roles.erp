@@ -1,0 +1,11 @@
+extend role Marketer {
+  entity Website
+  entity MarketingProduct
+  entity Article = readWrite
+  menu Marketing {
+    entity Website
+    entity MarketingProduct
+    entity Article
+  }
+}
+  

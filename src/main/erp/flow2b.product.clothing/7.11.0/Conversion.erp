@@ -1,0 +1,15 @@
+back object Conversion extends IConversion {
+  func convert(version: [Int?]?): Future[Any] = {
+    if (version < [7,11,0]) {
+      renameEntity(ClothingVariation, "ClothingSize")
+      ClothingVariation.all.foreach{v =>
+        if (let color = field[ConvEntity?](v, "closingColor")) {
+          v.superProduct = field(color, "superProduct")
+          v._color = field(color, "color")
+          v.save
+        }
+      }
+    }
+  }  
+}   
+    

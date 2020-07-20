@@ -1,0 +1,9 @@
+enum JewelleryForm {
+  case Ring
+  case Earring
+  case Necklace
+  case Pendant
+  case Bracelet
+  case Charm
+  case Unknown
+}

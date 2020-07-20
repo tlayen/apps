@@ -1,0 +1,8 @@
+extend access Buyer {    
+  menu Supply {
+    entity Distribution
+    entity PurchaseInvoice
+    entity OutcomePayment
+    report SupplyPlanning
+  }
+}

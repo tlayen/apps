@@ -1,0 +1,3 @@
+entity Service {
+  field title : String
+}

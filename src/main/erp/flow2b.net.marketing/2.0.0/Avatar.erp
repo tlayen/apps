@@ -1,0 +1,12 @@
+entity Avatar{
+  field title : String
+  field details : Text
+  field type : AvatarType
+}
+
+enum AvatarType{
+  case Partner
+  case Company
+  case Personal
+}
+  

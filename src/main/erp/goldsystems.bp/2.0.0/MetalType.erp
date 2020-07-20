@@ -1,0 +1,14 @@
+enum MetalType{
+  case Gold {
+    background = "#fe8"
+  }
+  case Silver {
+    background = "#bbb"
+  }
+  case Platinum{
+    background = "#eee"
+  }
+  case Palladium {
+    background = "#fae"
+  }
+}

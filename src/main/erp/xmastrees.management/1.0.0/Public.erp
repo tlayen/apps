@@ -1,0 +1,17 @@
+extend access Public {
+  entity SalesLocation = readOnly
+  entity SalesContractorApplication {
+    read = false
+    write = old.isEmpty
+  }
+  entity DriverApplication {
+    read = false
+    write = old.isEmpty
+  }
+  entity Person {
+    read = false
+    write = old.isEmpty
+  }
+  menu {
+  }
+}

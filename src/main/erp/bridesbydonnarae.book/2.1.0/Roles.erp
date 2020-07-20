@@ -1,0 +1,5 @@
+extend role Salesperson {
+  extend view menu = extend("Sales") {
+    SalesOpportunity
+  }
+}

@@ -1,0 +1,3 @@
+extend enum Currency {
+  case SGD(symbol = "SG\$", scale = 2, title = "Singapore dollar", position = Prefix) = "SG\$"
+}

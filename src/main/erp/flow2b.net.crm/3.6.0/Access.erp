@@ -1,0 +1,17 @@
+extend role Salesperson {
+  entity SalesOpportunity = readWrite
+  entity ContactUsMessage = readWrite
+  entity Article = readWrite
+  menu Sales {
+    entity ContactUsMessage
+    entity Article
+  }
+}
+
+extend role SalesManager {
+  entity Article = readWrite
+  menu Sales {
+    report SOFunnel
+    entity Article
+  } 
+}

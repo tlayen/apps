@@ -1,0 +1,9 @@
+trait IEcwidProductBase {
+  func sku: String
+
+  func obsolete: Bool
+  func weightInGrams: Number?
+  
+  func superProduct: ISuperProduct
+  func subProducts: [IProduct]?
+}
