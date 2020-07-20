@@ -151,4 +151,5 @@ erpDir.toFile.listFiles().foreach { dir =>
 ```
 
 [coursier]: https://get-coursier.io/
+[latest]: https://github.com/tlayen/apps/tree/latest/src/main/erp
 [sdkman!]: https://sdkman.io/
