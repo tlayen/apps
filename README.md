@@ -25,11 +25,31 @@ var Paths = Java.type('java.nio.file.Paths');
 var Files = Java.type('java.nio.file.Files');
 var Opt = Java.type('java.nio.file.StandardOpenOption');
 var dslDir = Paths.get('src/main/erp');
-var sources = db.query('select from AppSource');
 
 // If this fails then delete the directory manually.
-Files.deleteIfExists(dslDir);
+// Files.deleteIfExists(dslDir);
 
+var apps = db.query('select from App');
+for (var i = 0; i < apps.length; i++) {
+  var app = apps[i];
+  var id = app.field('@rid');
+  var dslPackage = app.field('dslPackage');
+  print('App: id = ' + id + ', dslPackage = ' + dslPackage);
+
+  var dir = dslDir.resolve(dslPackage);
+  Files.createDirectories(dir);
+
+  var manifest = dir.resolve('App.properties')
+  var fields = app.toMap();
+  for each (var field in fields.keySet()) {
+    if (!field.equals('files') && !field.equals('@class')) {
+      var prop = field + ' = ' + fields.get(field) + '\n';
+      Files.write(manifest, prop.getBytes(), Opt.APPEND, Opt.CREATE);
+    }
+  }
+}
+
+var sources = db.query('select from AppSource');
 for (var i = 0; i < sources.length; i++) {
   var source = sources[i];
   var id = source.field('@rid');
